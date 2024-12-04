@@ -1,0 +1,6 @@
+asyncio
+aiohttp
+uuid
+cloudscraper
+loguru
+colorama
