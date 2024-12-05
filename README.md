@@ -5,6 +5,7 @@ git clone https://github.com/Horizen5/nodepay-new.git
 ```
 安装依赖
 ```
+cd nodepay-new
 pip install -r requirements.txt
 ```
 运行命令
