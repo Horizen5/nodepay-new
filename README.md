@@ -18,5 +18,5 @@ python3 main.py
 检查代理运行情况
 ```
 cd nodepay-new
-python3 main.py
+python3 cek.py
 ```
