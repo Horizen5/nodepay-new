@@ -1,4 +1,4 @@
-##
+## 运行
 克隆仓库
 ```
 git clone https://github.com/Horizen5/nodepay-new.git
@@ -13,7 +13,7 @@ screen -S nodepay
 cd nodepay
 python3 main.py
 ```
-##
+## 检查
 检查代理运行情况
 ```
 cd nodepay
