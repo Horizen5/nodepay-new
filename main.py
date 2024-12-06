@@ -4,11 +4,11 @@ import time
 import uuid
 import sys
 import os
+import random
 
 from curl_cffi import requests
 from loguru import logger
 from colorama import Fore, Style, init
-from fake_useragent import UserAgent
 
 # 初始化colorama以支持Windows系统
 init(autoreset=True)
@@ -43,7 +43,7 @@ def display_menu():
     return choice
 
 def register_accounts():
-    print(f"{Fore.MAGENTA}注册账户功能尚未实现。{Style.RESET_ALL}")
+    print(f"{Fore.MAGENTA}注册账户功��尚未实现。{Style.RESET_ALL}")
 
 # 常量
 PING_INTERVAL = 60
@@ -98,9 +98,18 @@ async def render_profile_info(proxy, token):
         remove_proxy_from_list(proxy)
         return None
 
+def load_user_agents(ua_file='useragents.txt'):
+    try:
+        with open(ua_file, 'r') as file:
+            user_agents = file.read().splitlines()
+        return user_agents
+    except Exception as e:
+        logger.warning(f"{Fore.YELLOW}无法加载User-Agent文件，使用默认User-Agent{Style.RESET_ALL}")
+        return ["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"]
+
 async def call_api(url, data, proxy, token):
-    user_agent = UserAgent(os=['windows', 'macos', 'linux'], browsers='chrome')
-    random_user_agent = user_agent.random
+    user_agents = load_user_agents()
+    random_user_agent = random.choice(user_agents)
     headers = {
         "Authorization": f"Bearer {token}",
         "User-Agent": random_user_agent,
